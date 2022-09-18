@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   title = 'vehicle-inventory';
 
   vehicles!: Vehicle[] | undefined;
+  selectedVehicle: Vehicle | undefined;
   refreshing = false;
   subscribtions = new SubSink();
 
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
         this.vehicleService.addVehicleToLocalCache(response)
         this.vehicles = response;
         this.refreshing = false;
-    
+
       }, error => {
         this.refreshing = false;
       }
@@ -39,5 +40,12 @@ export class HomeComponent implements OnInit {
     )
   }
 
+  onSelectedVehicle(selectedVehicle: Vehicle) {
+    this.selectedVehicle = selectedVehicle;
+    this.clickButton('openVehicleInfo');
+  }
 
+  clickButton(buttonId: string): void {
+    document.getElementById(buttonId)?.click();
+  }
 }

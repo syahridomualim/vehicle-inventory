@@ -1,7 +1,7 @@
 export interface Vehicle {
     registeredNumber: number;
     owner: string;
-    address: string,
+    addresses: string,
     brand: string,
     productionYear: number,
     cylinderCapacity: number,
